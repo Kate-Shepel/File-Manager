@@ -1,0 +1,19 @@
+{
+  "name": "nodejs_filemanager",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kate-Shepel/File-Manager.git"
+  },
+  "author": "Kate Shepelenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kate-Shepel/File-Manager/issues"
+  },
+  "homepage": "https://github.com/Kate-Shepel/File-Manager#readme",
+  "description": ""
+}
