@@ -1,3 +1,5 @@
+import { homedir } from 'os';
+
 export const getUsernameFromArgs = () => {
   const args = process.argv.slice(2);
   let username = '';
@@ -18,6 +20,7 @@ export const getUsernameFromArgs = () => {
 
 export const greetUser = (username) => {
   console.log(`Welcome to the File Manager, ${username}!`);
+  console.log(`You are currently in ${homedir()}`);
 };
 
 export const sayGoodbye = (username) => {
