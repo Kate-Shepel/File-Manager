@@ -3,6 +3,7 @@ import { stdin } from 'process';
 import { getUsernameFromArgs, greetUser, sayGoodbye } from './hiBye/hiByeUser.js';
 import { goUp, initWorkingDir, switchDirectory } from './navigation/navigation.js';
 import { listContent } from './list/list.js';
+import { cat } from './fileOperations/readAndPrint.js';
 
 const username = getUsernameFromArgs();
 
@@ -30,6 +31,13 @@ stdin.on('data', (data) => {
       break;
     case 'ls':
       listContent();
+      break;
+    case 'cat':
+      if (args.length > 0) {
+        cat(args.join(' '));
+      } else {
+        console.log('Invalid input');
+      }
       break;
     default:
       console.log('Invalid input');
