@@ -15,8 +15,6 @@ stdin.on('data', (data) => {
   const input = data.toString().trim();
   const [command, ...args] = input.split(' ');
 
-  console.log(`Command: ${command}, Args: ${args.join(' ')}`);
-
   switch (command) {
     case '.exit':
       sayGoodbye(username);
