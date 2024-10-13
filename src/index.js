@@ -5,6 +5,7 @@ import { goUp, initWorkingDir, switchDirectory } from './navigation/navigation.j
 import { listContent } from './list/list.js';
 import { cat } from './fileOperations/readAndPrint.js';
 import { add } from './fileOperations/create.js';
+import { rename } from './fileOperations/rename.js';
 
 const username = getUsernameFromArgs();
 
@@ -43,6 +44,13 @@ stdin.on('data', (data) => {
     case 'add':
       if (args.length > 0) {
         add(args.join(' '));
+      } else {
+        console.log('Invalid input');
+      }
+      break;
+    case 'rn':
+      if (args.length === 2) {
+        rename(args[0], args[1]);
       } else {
         console.log('Invalid input');
       }
