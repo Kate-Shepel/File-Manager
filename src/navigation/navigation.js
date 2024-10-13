@@ -1,5 +1,5 @@
 import { cwd, chdir } from 'process';
-import { resolve, dirname } from 'path';
+import { resolve, dirname, isAbsolute } from 'path';
 import { homedir } from 'os';
 
 export const printWorkingDirectory = () => {
@@ -15,6 +15,22 @@ export const goUp = () => {
       chdir(parentDir);
     }
 
+    printWorkingDirectory();
+  } catch (err) {
+    console.error('Operation failed');
+  }
+};
+
+export const switchDirectory = (path) => {
+  try {
+    let newPath;
+    if (isAbsolute(path)) {
+      newPath = path;
+    } else {
+      newPath = resolve(cwd(), path);
+    }
+
+    chdir(newPath);
     printWorkingDirectory();
   } catch (err) {
     console.error('Operation failed');
