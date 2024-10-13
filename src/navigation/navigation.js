@@ -37,7 +37,7 @@ export const switchDirectory = (path) => {
   }
 };
 
-export const initializeWorkingDirectory = () => {
+export const initWorkingDir = () => {
   try {
     chdir(homedir());
     printWorkingDirectory();

@@ -1,12 +1,13 @@
 import { stdin } from 'process';
 
 import { getUsernameFromArgs, greetUser, sayGoodbye } from './hiBye/hiByeUser.js';
-import { goUp, initializeWorkingDirectory, switchDirectory } from './navigation/navigation.js';
+import { goUp, initWorkingDir, switchDirectory } from './navigation/navigation.js';
+import { listContent } from './list/list.js';
 
 const username = getUsernameFromArgs();
 
 greetUser(username);
-initializeWorkingDirectory();
+initWorkingDir();
 
 stdin.on('data', (data) => {
   const input = data.toString().trim();
@@ -26,6 +27,9 @@ stdin.on('data', (data) => {
       } else {
         console.log('Invalid input');
       }
+      break;
+    case 'ls':
+      listContent();
       break;
     default:
       console.log('Invalid input');
