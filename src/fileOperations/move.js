@@ -1,8 +1,9 @@
 import { join, basename, isAbsolute } from 'path';
+import { unlink } from 'fs/promises';
 import { createReadStream, createWriteStream } from 'fs';
 import { cwd } from 'process';
 
-export const copy = async (sourcePath, targetDirectory) => {
+export const move = async (sourcePath, targetDirectory) => {
   try {
     const srcFilePath = isAbsolute(sourcePath) ? sourcePath : join(cwd(), sourcePath);
     const trgDirPath = isAbsolute(targetDirectory) ? targetDirectory : join(cwd(), targetDirectory);
@@ -21,10 +22,17 @@ export const copy = async (sourcePath, targetDirectory) => {
 
     sourceStream.pipe(destinationStream);
 
-    destinationStream.on('finish', () => {
-      console.log(`File ${sourcePath} copied successfully to ${targetDirectory}`);
+    destinationStream.on('finish', async () => {
+      console.log(`File ${basename(sourcePath)} has been moved successfully to ${targetDirectory}`);
+
+      try {
+        await unlink(srcFilePath);
+        console.log(`-----File ${basename(sourcePath)} has been also deleted from ${srcFilePath}-----`);
+      } catch (err) {
+        console.error('Operation failed to remove the original file:', err.message);
+      }
     });
   } catch (err) {
-    console.error('Operation failed');
+    console.error('Operation failed:', err.message);
   }
 };

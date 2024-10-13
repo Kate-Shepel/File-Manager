@@ -7,6 +7,7 @@ import { cat } from './fileOperations/readAndPrint.js';
 import { add } from './fileOperations/create.js';
 import { rename } from './fileOperations/rename.js';
 import { copy } from './fileOperations/copy.js';
+import { move } from './fileOperations/move.js';
 
 const username = getUsernameFromArgs();
 
@@ -59,6 +60,13 @@ stdin.on('data', (data) => {
     case 'cp':
       if (args.length === 2) {
         copy(args[0], args[1]);
+      } else {
+        console.log('Invalid input');
+      }
+      break;
+    case 'mv':
+      if (args.length === 2) {
+        move(args[0], args[1]);
       } else {
         console.log('Invalid input');
       }
