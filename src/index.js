@@ -4,6 +4,7 @@ import { getUsernameFromArgs, greetUser, sayGoodbye } from './hiBye/hiByeUser.js
 import { goUp, initWorkingDir, switchDirectory } from './navigation/navigation.js';
 import { listContent } from './list/list.js';
 import { cat } from './fileOperations/readAndPrint.js';
+import { add } from './fileOperations/create.js';
 
 const username = getUsernameFromArgs();
 
@@ -13,6 +14,8 @@ initWorkingDir();
 stdin.on('data', (data) => {
   const input = data.toString().trim();
   const [command, ...args] = input.split(' ');
+
+  console.log(`Command: ${command}, Args: ${args.join(' ')}`);
 
   switch (command) {
     case '.exit':
@@ -35,6 +38,13 @@ stdin.on('data', (data) => {
     case 'cat':
       if (args.length > 0) {
         cat(args.join(' '));
+      } else {
+        console.log('Invalid input');
+      }
+      break;
+    case 'add':
+      if (args.length > 0) {
+        add(args.join(' '));
       } else {
         console.log('Invalid input');
       }
