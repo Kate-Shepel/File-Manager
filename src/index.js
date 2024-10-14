@@ -9,7 +9,7 @@ import { rename } from './fileOperations/rename.js';
 import { copy } from './fileOperations/copy.js';
 import { move } from './fileOperations/move.js';
 import { remove } from './fileOperations/delete.js';
-import { showCPUInfo, showEOL } from './osInfo/osInfo.js';
+import { showCPUInfo, showEOL, showHomeDir, showSystemUserName } from './osInfo/osInfo.js';
 
 const username = getUsernameFromArgs();
 
@@ -88,6 +88,12 @@ stdin.on('data', (data) => {
             break;
           case '--cpus':
             showCPUInfo();
+            break;
+          case '--homedir':
+            showHomeDir();
+            break;
+          case '--username':
+            showSystemUserName();
             break;
           default:
             console.log('Invalid input');

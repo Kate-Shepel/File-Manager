@@ -10,8 +10,16 @@ export const showCPUInfo = () => {
 
   console.log(`Number of CPUs: ${cpusNumber}`);
 
-  cpuData.forEach((cpu, index) => {
-    const { model, speed } = cpu;
+  cpuData.forEach((cpuItem, index) => {
+    const { model, speed } = cpuItem;
     console.log(`CPU ${index + 1}: ${model}, ${speed / 1000} GHz`);
   });
+};
+
+export const showHomeDir = () => {
+  console.log(`Home directory: ${homedir()}`);
+};
+
+export const showSystemUserName = () => {
+  console.log(`System user name: ${userInfo().username}`);
 };
