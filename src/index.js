@@ -1,5 +1,4 @@
 import { stdin } from 'process';
-
 import { getUsernameFromArgs, greetUser, sayGoodbye } from './hiBye/hiByeUser.js';
 import { goUp, initWorkingDir, switchDirectory } from './navigation/navigation.js';
 import { listContent } from './list/list.js';
@@ -18,6 +17,7 @@ import {
 } from './osInfo/osInfo.js';
 import { calculateHash } from './hash/hash.js';
 import { compress } from './compression/compress.js';
+import { decompress } from './compression/decompress.js';
 
 const username = getUsernameFromArgs();
 
@@ -91,6 +91,13 @@ stdin.on('data', (data) => {
     case 'compress':
       if (args.length === 2) {
         compress(args[0], args[1]);
+      } else {
+        console.log('Invalid input');
+      }
+      break;
+    case 'decompress':
+      if (args.length === 2) {
+        decompress(args[0], args[1]);
       } else {
         console.log('Invalid input');
       }
