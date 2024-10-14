@@ -16,6 +16,7 @@ import {
   showHomeDir,
   showSystemUserName
 } from './osInfo/osInfo.js';
+import { calculateHash } from './hash/hash.js';
 
 const username = getUsernameFromArgs();
 
@@ -82,6 +83,13 @@ stdin.on('data', (data) => {
     case 'mv':
       if (args.length === 2) {
         move(args[0], args[1]);
+      } else {
+        console.log('Invalid input');
+      }
+      break;
+    case 'hash':
+      if (args.length > 0) {
+        calculateHash(args.join(' '));
       } else {
         console.log('Invalid input');
       }
