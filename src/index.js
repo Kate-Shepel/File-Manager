@@ -17,6 +17,7 @@ import {
   showSystemUserName
 } from './osInfo/osInfo.js';
 import { calculateHash } from './hash/hash.js';
+import { compress } from './compression/compress.js';
 
 const username = getUsernameFromArgs();
 
@@ -83,6 +84,13 @@ stdin.on('data', (data) => {
     case 'mv':
       if (args.length === 2) {
         move(args[0], args[1]);
+      } else {
+        console.log('Invalid input');
+      }
+      break;
+    case 'compress':
+      if (args.length === 2) {
+        compress(args[0], args[1]);
       } else {
         console.log('Invalid input');
       }
