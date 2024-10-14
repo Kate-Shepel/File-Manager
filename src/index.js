@@ -9,6 +9,7 @@ import { rename } from './fileOperations/rename.js';
 import { copy } from './fileOperations/copy.js';
 import { move } from './fileOperations/move.js';
 import { remove } from './fileOperations/delete.js';
+import { showEOL } from './osInfo/osInfo.js';
 
 const username = getUsernameFromArgs();
 
@@ -75,6 +76,13 @@ stdin.on('data', (data) => {
     case 'mv':
       if (args.length === 2) {
         move(args[0], args[1]);
+      } else {
+        console.log('Invalid input');
+      }
+      break;
+    case 'os':
+      if (args.length === 1 && args[0] === '--EOL') {
+        showEOL();
       } else {
         console.log('Invalid input');
       }
