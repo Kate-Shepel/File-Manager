@@ -9,7 +9,7 @@ import { rename } from './fileOperations/rename.js';
 import { copy } from './fileOperations/copy.js';
 import { move } from './fileOperations/move.js';
 import { remove } from './fileOperations/delete.js';
-import { showEOL } from './osInfo/osInfo.js';
+import { showCPUInfo, showEOL } from './osInfo/osInfo.js';
 
 const username = getUsernameFromArgs();
 
@@ -81,8 +81,17 @@ stdin.on('data', (data) => {
       }
       break;
     case 'os':
-      if (args.length === 1 && args[0] === '--EOL') {
-        showEOL();
+      if (args.length === 1) {
+        switch (args[0]) {
+          case '--EOL':
+            showEOL();
+            break;
+          case '--cpus':
+            showCPUInfo();
+            break;
+          default:
+            console.log('Invalid input');
+        }
       } else {
         console.log('Invalid input');
       }
