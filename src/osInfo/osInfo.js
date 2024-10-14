@@ -23,3 +23,7 @@ export const showHomeDir = () => {
 export const showSystemUserName = () => {
   console.log(`System user name: ${userInfo().username}`);
 };
+
+export const showCPUArchitecture = () => {
+  console.log(`CPU architecture: ${arch()}`);
+};
